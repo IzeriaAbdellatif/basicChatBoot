@@ -6,23 +6,16 @@ import string
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
+#load data from haging face
 from datasets import load_dataset
-
 ds = load_dataset("bitext/Bitext-customer-support-llm-chatbot-training-dataset")
 
-# Sample data
-qa_pairs = {
-    "Hi": "Hello! How can I assist you today?",
-    "What is your name?": "I'm a chatbot created to assist you.",
-    "How can I apply for the chatbot internship?": "You can apply by visiting our careers page and submitting your application.",
-    "Thank you": "You're welcome! If you have any other questions, feel free to ask."
-}
 
-corpus = list(qa_pairs.keys())
-responses = list(qa_pairs.values())
+corpus = ds['train']['instruction']
+responses = ds['train']['response']
+
 
 #text preprocessing
-
 
 lemmer = nltk.stem.WordNetLemmatizer()
 
@@ -48,7 +41,7 @@ def get_response(user_input):
     
     idx = cosine_similarities.argsort()[0][-1]
     
-    if cosine_similarities[0, idx] > 0.2:
+    if cosine_similarities[0, idx] > 0.1:
         return responses[idx]
     
     else:
