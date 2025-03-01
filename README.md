@@ -47,15 +47,14 @@ Feel free to submit pull requests to improve the chatbot!
 
 ## License
 This project is licensed under the MIT License.
-```
 
-### **Next Steps**
+### Next Steps
 1. Save this file as `README.md` in your project folder.
 2. Add and commit it to Git:
-   ```bash
-   git add README.md
-   git commit -m "Added README"
-   git push origin main
-   ```
+```bash
+git add README.md
+git commit -m "Added README"
+git push origin main
+```
 
 Let me know if you want any modifications! 🚀
